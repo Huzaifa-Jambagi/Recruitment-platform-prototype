@@ -13,29 +13,18 @@ Features
 -Frontend Integration: React pages communicate with backend via Axios; JWT stored in localStorage.
 
 Database Schema
-
 User Collection:
-
      email (unique)
-
      password (hashed)
-
      profile
-
      fullName
-
      headline
-
      location
-
      about
-
      lastLogin (timestamp)
 
 Architecture & Scaling
-
- -  Backend: Node.js + Express, modular routes, JWT authentication
-
+-  Backend: Node.js + Express, modular routes, JWT authentication
  - Frontend: React with routing and protected pages
 
 Setup Instructions
@@ -43,7 +32,7 @@ Setup Instructions
     cd backend
     npm install  
     Create a .env file with the following variables:
-    MONGO_URI=<your-mongodb-connection-string>
+    MONGO_URI=<your-mongodb-connection-string> 
     JWT_SECRET=<your-secret-key>
     node index.js
 
