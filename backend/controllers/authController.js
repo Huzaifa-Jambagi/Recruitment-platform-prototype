@@ -2,7 +2,7 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 import { User } from "../models/user.model.js";
 
-export const signUp = async (req, res) => {
+const signUp = async (req, res) => {
 
     try {
         const { email, password, profile } = req.body;
@@ -36,16 +36,16 @@ export const signUp = async (req, res) => {
 
 }
 
-export const login = async (req, res) => {
+const login = async (req, res) => {
     try {
         const { email, password } = req.body;
         if (!email || !password) {
             return res.status(400).json({ error: "Email and password required" });
         }
 
-        const user = await User.findOne({email});
+        const user = await User.findOne({ email });
         if (!user) {
-            return res.status(401).json({ error: "Email doesnt exist" }); 
+            return res.status(401).json({ error: "Email doesnt exist" });
         }
 
         const isMatch = await bcrypt.compare(password, user.password);
@@ -72,5 +72,18 @@ export const login = async (req, res) => {
         console.error("login error:", err);
         return res.status(500).json({ error: "Server error" });
     }
-
 }
+
+export const getProfile = async (req, res) => {
+    try {
+        const user = await User.findById(req.user.id);
+        if (!user) return res.status(404).json({ error: "User not found" });
+        return res.json({ user });
+    } catch (err) {
+        console.error("getProfile error:", err);
+        return res.status(500).json({ error: "Server error" });
+    }
+}
+
+export { getProfile, login, signUp };
+
