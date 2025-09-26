@@ -20,10 +20,8 @@ const Login = () => {
           password: form.password,
 
         })
-        localStorage.setItem("token", res.data.token);
-        localStorage.setItem("user", JSON.stringify(res.data.user));
-      console.log("Login successful:", res.data);
-      alert(`Welcome back, ${res.data.user.profile.fullName}!`);
+      localStorage.setItem("token", res.data.token);
+      alert("Logged in succesfully");
 
       navigate("/");
 

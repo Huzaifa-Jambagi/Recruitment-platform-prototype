@@ -1,3 +1,4 @@
+import axios from "axios";
 import { useEffect, useState } from "react";
 import Navbar from "../components/Navbar";
 import ProfileCard from "../components/ProfileCard";
@@ -7,12 +8,22 @@ const Home = () => {
   const [user, setUser] = useState(null);
 
   useEffect(() => {
-   const token = localStorage.getItem("token");
-  const storedUser = localStorage.getItem("user");
+  const token = localStorage.getItem("token");
 
-  if (token && storedUser) {
-    setUser(JSON.parse(storedUser)); 
-  }
+    if (token) {
+      axios
+        .get("http://localhost:3000/auth/user", {
+          headers: { Authorization: `Bearer ${token}` },
+        })
+        .then((res) => {
+          console.log(res.data.user)
+          setUser(res.data.user); 
+        })
+        .catch((err) => {
+          console.error("Error fetching profile:", err);
+          localStorage.removeItem("token"); 
+        });
+    }
   }, []);
 
   return (
