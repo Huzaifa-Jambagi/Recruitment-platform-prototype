@@ -1,6 +1,6 @@
-import bcrypt from "bcryptjs";
+import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import { User } from "../models/user.model.js";
+import { User } from "../models/userModel.js";
 
 const signUp = async (req, res) => {
 
@@ -74,7 +74,7 @@ const login = async (req, res) => {
     }
 }
 
-export const getProfile = async (req, res) => {
+ const getProfile = async (req, res) => {
     try {
         const user = await User.findById(req.user.id);
         if (!user) return res.status(404).json({ error: "User not found" });

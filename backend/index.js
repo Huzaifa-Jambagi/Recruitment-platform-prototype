@@ -1,8 +1,8 @@
-const express=require('express');
 import cors from "cors";
 import dotenv from "dotenv";
-import { connectDB } from "./config/db.js";
-import authRoutes from "./routes/auth.js";
+import express from 'express';
+import connectDB from "./config/db.js";
+import authRoutes from "./routes/authRoute.js";
 
 const app= express();
 
@@ -18,6 +18,6 @@ app.use(cors());
 app.use(express.json());
 app.use("/auth",authRoutes)
 
-app.get('/',(req,res)=>{
-    res.send('hello world')
+app.get('/working',(req,res)=>{
+    res.send('ok')
 })
