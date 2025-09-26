@@ -29,6 +29,7 @@ Architecture & Scaling
 
 Setup Instructions
   Backend
+    
     cd backend
     npm install  
     Create a .env file with the following variables:
@@ -37,6 +38,7 @@ Setup Instructions
     node index.js
 
 Frontend
-   cd frontend
-   npm install
-   npm run dev
+   
+    cd frontend
+    npm install
+    npm run dev
