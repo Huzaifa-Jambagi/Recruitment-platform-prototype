@@ -42,10 +42,10 @@ Setup Instructions
   Backend
     cd backend
     npm install  
-   # Create a .env file with the following variables:
-   # MONGO_URI=<your-mongodb-connection-string>
-   # JWT_SECRET=<your-secret-key>
-   node index.js
+    Create a .env file with the following variables:
+    MONGO_URI=<your-mongodb-connection-string>
+    JWT_SECRET=<your-secret-key>
+    node index.js
 
 Frontend
    cd frontend
